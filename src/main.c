@@ -51,6 +51,8 @@ parse_opt (int key, char *arg,
         }
         printf ("\n");
         break;
+    case 777:
+        return parse_opt ('d', "3", state);
     }
   return 0;
 }
@@ -63,6 +65,7 @@ main (int argc, char **argv)
 	{ "dot", ARG_KEY_D, "NUM", OPTION_ARG_OPTIONAL, "Show some dot on the screen"},
 	{ "smile", ARG_KEY_S, "number", OPTION_ARG_OPTIONAL, "Show ^^ on the screen"},
 	{ "period", ARG_KEY_A, "FOO", OPTION_ALIAS, "Bar" },
+    { "ellipsis", 777, 0, 0, "Show an ellipsis on the screen"},
     { 0 }
     };
   struct argp argp = { options, parse_opt };
