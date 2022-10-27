@@ -44,7 +44,7 @@ main (int argc, char **argv)
 {
   struct argp_option options[] = 
     {
-	{ 0, ARG_KEY_D, "NUM", 0, "Show some dot on the screen"},
+	{ "dot", ARG_KEY_D, "NUM", 0, "Show some dot on the screen"},
 	{ 0 }
     };
   struct argp argp = { options, parse_opt };
