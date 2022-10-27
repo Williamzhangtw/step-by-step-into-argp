@@ -31,8 +31,13 @@ parse_opt (int key, char *arg,
     {
     case ARG_KEY_D:
         unsigned int i;
-        for (i = 0; i < atoi (arg); i++)
-        printf (".");
+        if(arg == NULL){
+            printf ("arg == NULL");
+        }else{
+            for (i = 0; i < atoi (arg); i++){
+                printf (".");
+            }
+        }
         printf ("\n");
         break;
     }
@@ -44,7 +49,7 @@ main (int argc, char **argv)
 {
   struct argp_option options[] = 
     {
-	{ "dot", ARG_KEY_D, "NUM", 0, "Show some dot on the screen"},
+	{ "dot", ARG_KEY_D, "NUM", OPTION_ARG_OPTIONAL, "Show some dot on the screen"},
 	{ 0 }
     };
   struct argp argp = { options, parse_opt };
