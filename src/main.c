@@ -17,7 +17,9 @@
   02110-1301, USA.
 */
 #include <stdio.h>
+#include <stdlib.h>
 #include <argp.h>
+#include <string.h>
 
 #define ARG_KEY_D 'd'
 
@@ -27,7 +29,12 @@ parse_opt (int key, char *arg,
 {
   switch (key)
     {
-    case ARG_KEY_D: printf (".\n"); break;
+    case ARG_KEY_D:
+        unsigned int i;
+        for (i = 0; i < atoi (arg); i++)
+        printf (".");
+        printf ("\n");
+        break;
     }
   return 0;
 }
@@ -37,7 +44,7 @@ main (int argc, char **argv)
 {
   struct argp_option options[] = 
     {
-	{ 0, ARG_KEY_D, 0, 0, "Show a dot on the screen"},
+	{ 0, ARG_KEY_D, "NUM", 0, "Show some dot on the screen"},
 	{ 0 }
     };
   struct argp argp = { options, parse_opt };
